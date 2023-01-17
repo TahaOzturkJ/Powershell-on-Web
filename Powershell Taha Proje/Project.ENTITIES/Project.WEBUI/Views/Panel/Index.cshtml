@@ -1,0 +1,51 @@
+﻿@model IList<System.Management.Automation.PSObject>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    #output{
+        max-height:800px;
+        max-width:1200px;
+        border-block: 5px solid black;
+        margin-top:10px;
+    }
+</style>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    <div class="container">
+        <div class="interaction-bar">
+            <button class="btn btn-primary">Show All Processes</button>
+        </div>
+        @*@{
+                   if (Model != null)
+                   {
+                       System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+                       foreach (System.Management.Automation.PSObject psObject in Model)
+                       {
+                           @stringBuilder.AppendLine(psObject.ToString());
+                           @stringBuilder.ToString()
+                       }
+                   }
+                   else
+                   {
+
+                   }
+        }*@
+
+        @if (ViewBag.psResult != null)
+        {
+            <pre id="output">
+                  @ViewBag.psResult
+            </pre>
+        }
+        else
+        {
+
+        }
+
+    </div>
+}
+
